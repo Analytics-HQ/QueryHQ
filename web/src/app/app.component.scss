@@ -3,9 +3,6 @@
   background-color: #fbfbfb;
   border-bottom: 1px solid #ddd;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
   font-size: 14px;
   font-weight: bold;
 }
@@ -22,18 +19,52 @@
   overflow: auto;
 }
 
+.bottom-pane {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
 .control-bar {
-  height: 75px;
+  height: 50px; /* Fixed height */
   background-color: #fbfbfb;
   display: flex;
   align-items: center;
   justify-content: center;
   border-bottom: 1px solid #ccc;
   font-size: 14px;
+  flex-shrink: 0; /* Prevent resizing */
+}
+
+.horizontal-split {
+  flex: 1; /* Take up the remaining height */
+  display: flex;
+  flex-direction: column; /* Stack content vertically */
+  height: 100%; /* Occupy full height */
+  padding: 0; /* Ensure no padding affects height */
+  margin: 0; /* Ensure no margin affects height */
+  border: none; /* Remove any borders that might add height */
+}
+
+ngx-datatable {
+  height: 100%; /* Ensure it fully occupies its container */
+  width: 100%; /* Ensure full width */
+  display: block;
+  overflow-y: auto; /* Enable vertical scrolling */
+  overflow-x: auto; /* Enable horizontal scrolling */
+  box-sizing: border-box; /* Include padding and border in height calculation */
+}
+
+.datatable-container {
+  height: 100%;
+  width: 100%;
+  overflow: hidden; /* Ensure no extra overflow content */
+  padding: 0; /* Remove any extra padding */
+  margin: 0; /* Remove any extra margin */
 }
 
 as-split {
-  height: 100vh;
+  height: 100%;
 }
 
 as-split-area {

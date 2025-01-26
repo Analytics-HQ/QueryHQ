@@ -1,11 +1,10 @@
 <div class="top-pane">
-  <h1>Top Pane</h1>
+  <fa-icon [icon]="faPlay"></fa-icon>
 </div>
 
 <div class="main-container">
   <!-- Non-Resizable Left Pane -->
   <div class="left-pane">
-    <h2>Non-Resizable Left Pane</h2>
   </div>
 
   <!-- Resizable Right Pane -->
@@ -24,13 +23,36 @@
 
     <!-- Bottom Resizable Pane -->
     <as-split-area [size]="50">
-      <div class="control-bar">Bar</div>
-      <as-split direction="horizontal" [gutterSize]="3">
-        <!-- Left Bottom Pane -->
-        <as-split-area [size]="80"></as-split-area>
-        <!-- Right Bottom Pane -->
-        <as-split-area [size]="20"></as-split-area>
-      </as-split>
+      <div class="bottom-pane">
+        <!-- Fixed Control Bar -->
+        <div class="control-bar">
+          Bar
+        </div>
+        <!-- Horizontal Split Pane -->
+        <div class="horizontal-split">
+          <as-split direction="horizontal" [gutterSize]="3">
+            <as-split-area [size]="80">
+              <div class="pagination-container">
+                <button (click)="previousPage()" [disabled]="page === 1">Previous</button>
+                <span>Page {{ page }} of {{ totalPages }}</span>
+                <button (click)="nextPage()" [disabled]="page === totalPages">Next</button>
+              </div>
+              <ngx-datatable
+                class="material"
+                [rows]="paginatedRows"
+                [columns]="columns"
+                [headerHeight]="50"
+                [footerHeight]="0"
+                [rowHeight]="50"
+                [scrollbarV]="true"
+                [scrollbarH]="true"
+                [externalPaging]="true">
+              </ngx-datatable>
+            </as-split-area>
+            <as-split-area [size]="20"></as-split-area>
+          </as-split>
+        </div>
+      </div>
     </as-split-area>
   </as-split>
 </div>

@@ -1,6 +1,10 @@
 import { bootstrapApplication } from '@angular/platform-browser';
 import { appConfig } from './app/app.config';
 import { AppComponent } from './app/app.component';
+import { library, dom } from '@fortawesome/fontawesome-svg-core';
 
-bootstrapApplication(AppComponent, appConfig)
-  .catch((err) => console.error(err));
+dom.watch();
+
+bootstrapApplication(AppComponent, appConfig).catch((err) =>
+  console.error(err),
+);
