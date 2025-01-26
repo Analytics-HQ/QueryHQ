@@ -1,20 +1,36 @@
-<as-split direction="vertical" [gutterSize]="5">
-  <!-- Top Pane: SQL Editor -->
-  <as-split-area class="editor-pane">
-    <div style="height: 100%; display: flex; flex-direction: column;">
-      <h1>SQL Editor</h1>
-      <ngx-monaco-editor
-        style="flex: 1;"
-        [options]="options"
-        [(ngModel)]="code"
-        (onInit)="onInit($event)">
-      </ngx-monaco-editor>
-    </div>
-  </as-split-area>
+<div class="top-pane">
+  <h1>Top Pane</h1>
+</div>
 
-  <!-- Bottom Pane: Results -->
-  <as-split-area>
-    <h1>Results</h1>
-    <pre>{{ code }}</pre>
-  </as-split-area>
-</as-split>
+<div class="main-container">
+  <!-- Non-Resizable Left Pane -->
+  <div class="left-pane">
+    <h2>Non-Resizable Left Pane</h2>
+  </div>
+
+  <!-- Resizable Right Pane -->
+  <as-split direction="vertical" [gutterSize]="3" (dragEnd)="onGutterResize()">
+    <!-- Top Resizable Pane -->
+    <as-split-area>
+      <div style="height: 100%; display: flex; flex-direction: column;">
+        <ngx-monaco-editor
+          style="flex: 1;"
+          [options]="options"
+          [(ngModel)]="code"
+          (onInit)="onInit($event)">
+        </ngx-monaco-editor>
+      </div>
+    </as-split-area>
+
+    <!-- Bottom Resizable Pane -->
+    <as-split-area [size]="50">
+      <div class="control-bar">Bar</div>
+      <as-split direction="horizontal" [gutterSize]="3">
+        <!-- Left Bottom Pane -->
+        <as-split-area [size]="80"></as-split-area>
+        <!-- Right Bottom Pane -->
+        <as-split-area [size]="20"></as-split-area>
+      </as-split>
+    </as-split-area>
+  </as-split>
+</div>

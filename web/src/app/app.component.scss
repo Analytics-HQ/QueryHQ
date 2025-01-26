@@ -1,13 +1,47 @@
+.top-pane {
+  height: 100px;
+  background-color: #fbfbfb;
+  border-bottom: 1px solid #ddd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.main-container {
+  display: flex;
+  height: calc(100vh - 100px);
+}
+
+.left-pane {
+  width: 300px;
+  background-color: #fbfbfb;
+  border-right: 1px solid #ddd;
+  overflow: auto;
+}
+
+.control-bar {
+  height: 75px;
+  background-color: #fbfbfb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid #ccc;
+  font-size: 14px;
+}
+
 as-split {
   height: 100vh;
 }
 
 as-split-area {
   overflow: hidden;
-}
-
-.editor-pane {
   display: flex;
   flex-direction: column;
-  height: 100%;
+}
+
+ngx-monaco-editor {
+  flex: 1;
 }
