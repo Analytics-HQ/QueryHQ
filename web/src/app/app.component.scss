@@ -1,0 +1,13 @@
+as-split {
+  height: 100vh;
+}
+
+as-split-area {
+  overflow: hidden;
+}
+
+.editor-pane {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}

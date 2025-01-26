@@ -1,5 +1,20 @@
-<h1>Editor</h1>
-<div style="height: 300px; border: 1px solid grey;">
-  <ngx-monaco-editor style="height: 100%" [options]="options" [(ngModel)]="code" (onInit)="onInit($event)"></ngx-monaco-editor>
-</div>
-<pre>{{code}}</pre>
+<as-split direction="vertical" [gutterSize]="5">
+  <!-- Top Pane: SQL Editor -->
+  <as-split-area class="editor-pane">
+    <div style="height: 100%; display: flex; flex-direction: column;">
+      <h1>SQL Editor</h1>
+      <ngx-monaco-editor
+        style="flex: 1;"
+        [options]="options"
+        [(ngModel)]="code"
+        (onInit)="onInit($event)">
+      </ngx-monaco-editor>
+    </div>
+  </as-split-area>
+
+  <!-- Bottom Pane: Results -->
+  <as-split-area>
+    <h1>Results</h1>
+    <pre>{{ code }}</pre>
+  </as-split-area>
+</as-split>
